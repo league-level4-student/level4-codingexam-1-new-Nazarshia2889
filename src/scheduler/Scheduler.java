@@ -1,5 +1,9 @@
 package scheduler;
 
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.Scanner;
+
 /*
  * Objective: Create a weekly scheduling application.
  * 
@@ -24,8 +28,63 @@ package scheduler;
  *   variables.
  */
 public class Scheduler {
+	
+	static Days[] days = Days.values();
 
     public static void main(String[] args) {
-
+    	
+    	Scanner scanner = new Scanner(System.in);
+    	
+    	System.out.println("What time will be your event? Format like this: (hh:mm aa)");
+		String time = scanner.next("[hh:mm]");
+		LocalTime lt = LocalTime.parse(time);
+		System.out.println(lt);
+    	
+//    	System.out.println("Choose a day of the week to explore.");
+//    	String dayChosen = scanner.nextLine();
+//    	
+//    	System.out.println("\n");
+//    	System.out.println("What would you like to do?");
+//    	System.out.println("View Events ('view'), Add Events ('add'), Remove Events ('remove')");
+//    	String action = scanner.nextLine();
+//    	
+//    	if(action.equalsIgnoreCase("view")) {
+//    		Days day = getDay(dayChosen);
+//    		LinkedList<Pair> events = day.events;
+//     		Node<Pair> next = events.getHead();
+//     		
+//     		while(next != null) {
+//     			System.out.println(next.getValue());
+//     			next = next.getNext();
+//     		}
+//    	}
+//    	else if(action.equalsIgnoreCase("add")) {
+//    		System.out.println("What time will be your event? Format like this: (hh:mm aa");
+//    		String time = scanner.next("hh:mm aa");
+//    		LocalTime lt = LocalTime.parse(time);
+//    	}
+//    	
+    	scanner.close();
+    }
+    
+    
+    enum Days {
+    	MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY;
+    	
+    	
+    	public LinkedList<Pair> events;
+    	
+    	private Days() {
+    		this.events = new LinkedList<Pair>();
+    	}
+    }
+    
+    static Days getDay(String dayChosen) {
+    	for(Days day : days) {
+    		if(dayChosen.equalsIgnoreCase(day.name())) {
+    			return day;
+    		}
+    	}
+    	return days[0];
     }
 }
