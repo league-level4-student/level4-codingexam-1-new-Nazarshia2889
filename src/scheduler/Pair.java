@@ -3,15 +3,15 @@ package scheduler;
 import java.util.Date;
 
 public class Pair {
-	Date d;
+	int d;
 	String s;
 	
-	public Pair(Date d, String s) {
+	public Pair(Integer d, String s) {
 		this.d = d;
 		this.s = s;
 	}
 	
-	public Date getDate() {
+	public int getDate() {
 		return this.d;
 	}
 	
